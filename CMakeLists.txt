@@ -9,7 +9,8 @@ set(CONFIG_USB_DEVICE 1)
 set(CONFIG_USB_DEVICE_CDC 1)
 set(CONFIG_DMA_MGR 1)
 set(CONFIG_HPM_SPI 1)
-
+set(BOARD hscant)
+set(BOARD_SEARCH_PATH ${CMAKE_SOURCE_DIR}/board)
 
 find_package(hpm-sdk REQUIRED HINTS $ENV{HPM_SDK_BASE})
 project(hpmicro_cangaroo)
