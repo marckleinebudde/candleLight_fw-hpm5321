@@ -77,7 +77,7 @@ static void spi_init(void)
     spi_initialize_config_t init_config;
     clock_add_to_group(WS2812_SPI_CLCOK, 0);
     hpm_spi_get_default_init_config(&init_config);
-    init_config.direction = msb_first;
+    init_config.direction = spi_msb_first;
     init_config.mode = spi_master_mode;
     init_config.clk_phase = spi_sclk_sampling_odd_clk_edges;
     init_config.clk_polarity = spi_sclk_low_idle;
@@ -273,7 +273,7 @@ void WS2812_Init(void)
     }
 
     /* step.3 install dma callback if want use dma */
-    if (hpm_spi_dma_install_callback(WS2812_SPI, spi_txdma_complete_callback, NULL) != status_success) {
+    if (hpm_spi_dma_mgr_install_callback(WS2812_SPI, spi_txdma_complete_callback, NULL) != status_success) {
         printf("hpm_spi_dma_install_callback fail\n");
         while (1) {
         }

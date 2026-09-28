@@ -3,12 +3,26 @@
 
 cmake_minimum_required(VERSION 3.13)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(default_build_type "Release")
+
+set(CMAKE_C_FLAGS_RELEASE "-O3")
+set(CMAKE_C_FLAGS_DEBUG "-O2")
+
+set(CMAKE_INTERPROCEDURAL_OPTIMIZATION_RELEASE TRUE)
+set(CMAKE_INTERPROCEDURAL_OPTIMIZATION_DEBUG FALSE)
+
+set(BOARD HSCanT)
+set(BOARD_SEARCH_PATH /home/frogger/projects/blackshift/usb-can-adapter/hscant/hpm_sdk_extra/boards)
+
 set(CONFIG_CHERRYRB 1)
 set(CONFIG_CHERRYUSB 1)
-set(CONFIG_USB_DEVICE 1)
-set(CONFIG_USB_DEVICE_CDC 1)
+set(CONFIG_CHERRYUSB_DEVICE 1)
 set(CONFIG_DMA_MGR 1)
 set(CONFIG_HPM_SPI 1)
+set(CONFIG_USB_DEVICE 1)
+set(CONFIG_USB_DEVICE_CDC 1)
+set(CONFIG_USB_DEVICE_CDC_ACM 1)
 
 find_package(hpm-sdk REQUIRED HINTS $ENV{HPM_SDK_BASE})
 project(hpmicro_cangaroo)
